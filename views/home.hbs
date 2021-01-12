@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h4>Post List</h4>
+                <a class="btn btn-primary" href="/add">create post</a>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Body</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#if posts}}
+                            {{#each posts}}
+                            <tr>
+                                <td>{{ title }}</td>
+                                <td>{{ body }}</td>
+                                <td class="action">
+                                    <a class="btn btn-info btn-sm" href="/edit/{{_id}}">Edit</a>
+                                    <form method="POST" action="/delete/{{_id}}?_method=DELETE">
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        {{else }}
+                            <tr>
+                                <td class="text-center" colspan="3">
+                                    <h3>No Post Found !</h3>
+                                </td>
+                            </tr>
+                        {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
